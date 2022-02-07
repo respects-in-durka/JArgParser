@@ -8,3 +8,7 @@
 - [ ] Support for lists
 - [ ] Support for sets
 - [ ] Support for java classes
+
+
+## Code coverage badge
+[![codecov](https://codecov.io/gh/respects-in-durka/JArgParser/branch/main/graph/badge.svg?token=QXZ4HBVOE6)](https://codecov.io/gh/respects-in-durka/JArgParser)
