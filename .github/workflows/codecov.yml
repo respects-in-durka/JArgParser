@@ -1,0 +1,16 @@
+name: Workflow for Codecov
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+    - name: Install dependencies
+      run: gradle build && gradle test
+    - name: Upload coverage to Codecov
+      run: bash <(curl -s https://codecov.io/bash)
