@@ -49,13 +49,13 @@ public class ArgumentParser<T extends BaseConfig> {
     }
 
     public T parse(String[] args) {
-        Map<String, String> argumentsMap = Arrays.stream(String.join(" ", args).replace("--", "").split(" ")).map(a -> a.split("=")).collect(Collectors.toMap(arg -> arg[0], arg -> arg[1]));
+        Map<String, String> argumentsMap = Arrays.stream(String.join(" ", args).split(" --")).map(a -> a.split("=")).collect(Collectors.toMap(arg -> arg[0].replace("--", ""), arg -> arg[1]));
         this.arguments.forEach((aliases, field) -> {
             Argument data = field.getDeclaredAnnotation(Argument.class);
             argumentsMap.forEach((key, value) -> {
                 if (aliases.contains(key)) {
-                    Resolver<?> resolver = ResolverFactory.getResolver(field.getType());
                     try {
+                        Resolver<?> resolver = ResolverFactory.getResolver(field.getType());
                         field.set(config, resolver.resolve(value));
                     } catch (IllegalArgumentException | IllegalAccessException e) {
                         e.printStackTrace();

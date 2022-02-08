@@ -1,5 +1,8 @@
 package com.nikitka.jargparser.resolver;
 
+import java.util.List;
+import com.nikitka.jargparser.resolver.impl.ListResolver;
+
 public class ResolverFactory {
 
     public static Resolver<?> getResolver(Class<?> clazz) {
@@ -21,6 +24,8 @@ public class ResolverFactory {
             return (input -> Boolean.parseBoolean(input));
         } else if (clazz.equals(Character.class) || clazz.equals(char.class)) {
             return (input -> Character.valueOf(input.charAt(0)));
+        } else if (List.class.isAssignableFrom(clazz)) {
+            return new ListResolver();
         }
         return (input -> input);
     }

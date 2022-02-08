@@ -5,10 +5,11 @@
 ## ToDo:
 
 - [ ] Support for arrays
-- [ ] Support for lists
+- [x] Support for lists (very weak)
 - [ ] Support for sets
 - [ ] Support for java classes
 
 
-## Code coverage badge
+## Some Badges
 [![codecov](https://codecov.io/gh/respects-in-durka/JArgParser/branch/main/graph/badge.svg?token=QXZ4HBVOE6)](https://codecov.io/gh/respects-in-durka/JArgParser)
+[![jitpack](https://jitpack.io/v/respects-in-durka/JArgParser.svg)](https://jitpack.io/#respects-in-durka/JArgParser)
