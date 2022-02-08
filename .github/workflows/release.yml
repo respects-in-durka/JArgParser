@@ -1,0 +1,26 @@
+name: Workflow for github releases
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+    - name: Build
+      run: gradle build && gradle test && gradle version
+    - name: version
+      id: version
+      run: echo "::set-output name=version::$(cat .version)"
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "lib/build/libs/**"
+        tag: ${{ steps.version.outputs.version }}
+        token: ${{ secrets.GITHUB_TOKEN }}

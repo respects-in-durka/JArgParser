@@ -3,6 +3,9 @@ plugins {
     id 'jacoco'
 }
 
+group = 'com.nikitka.jargparser'
+version = '0.1'
+
 repositories {
     mavenCentral()
 }
@@ -26,4 +29,15 @@ jacocoTestReport {
         html.required = false
     }
     dependsOn test
+}
+
+jar {
+    archiveBaseName = "JArgParser"
+    archiveVersion = version
+}
+
+tasks.create("version").configure {
+    doFirst {
+        new File(".version").text = version
+    }
 }

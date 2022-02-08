@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 public @interface Argument {
     /**
      * Aliases for an argument, default variable name
-     * @throws {@link IllegalArgumentException} if aliases are {} and exclude is true
+     * @throws IllegalArgumentException if aliases are {} and exclude is true
      * @return String[]
      */
     String[] aliases() default {};
@@ -20,7 +20,7 @@ public @interface Argument {
 
     /**
      * Exclude variable name from aliases
-     * @throws {@link IllegalArgumentException} if aliases are empty and exclude is true
+     * @throws IllegalArgumentException if aliases are empty and exclude is true
      * @return {@link Boolean}
      */
     boolean exclude() default false;
